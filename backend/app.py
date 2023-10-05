@@ -1,10 +1,8 @@
 from flask import Flask
 from flask_restx import Api
 from flask_migrate import Migrate
-from config import DevConfig
 from exts import db
 from flask_jwt_extended import JWTManager
-from models import Recipe
 from recipes import recipe_ns
 from auth import auth_ns
 
