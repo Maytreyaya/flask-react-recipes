@@ -16,6 +16,12 @@ recipe_model = recipe_ns.model(
 )
 
 
+@recipe_ns.route("/hello")
+class Hello(Resource):
+    def get(self):
+        return {"message": "hello_world"}
+
+
 @recipe_ns.route("/recipes")
 class RecipesResource(Resource):
     @recipe_ns.marshal_list_with(recipe_model)
@@ -67,4 +73,3 @@ class RecipeResource(Resource):
         recipe_to_del.delete()
 
         return recipe_to_del
-        pass

@@ -1,6 +1,7 @@
 from flask_restx import Resource, Namespace, fields
 from models import User
 from flask import request, jsonify, make_response
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (create_access_token,
                                 create_refresh_token)
@@ -46,6 +47,7 @@ class SignUp(Resource):
 
         return make_response(jsonify({"message": "User created successfully"}), 201)
 
+
 @auth_ns.route("/login")
 class Login(Resource):
     @auth_ns.expect(login_model)
@@ -66,3 +68,16 @@ class Login(Resource):
                  "refresh_token": refresh_token
                  }
             )
+
+
+@auth_ns.route("/refresh")
+class RefreshResource(Resource):
+    @jwt_required(refresh=True)
+    def post(self):
+        user = get_jwt_identity()
+
+        new_access_token = create_access_token(identity=user)
+
+        return make_response(jsonify({
+            "access_token": new_access_token,
+        }, 200))
