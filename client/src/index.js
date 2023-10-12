@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from "react-dom"
 import NavBar from './components/Navbar';
+import "./styles/main.css"
 
 import {
     BrowserRouter as Router,
@@ -18,7 +19,7 @@ const App=()=>{
 
     return (
         <Router>
-    <div className="container">
+    <div>
         <NavBar />
         <Routes>
             <Route path="/create-recipe" element={<CreateRecipe />} />

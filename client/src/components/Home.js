@@ -1,10 +1,12 @@
 import React from "react"
+import {Link} from "react-router-dom";
 
 
 const HomePage=()=>{
     return(
-        <div className="home">
-            <h1>Home Page</h1>
+        <div className="home container">
+            <h1>Welcome to the Recipes App</h1>
+            <Link to="/signup" className="btn btn-primary btn-block btn-lg">Sign Up for membership</Link>
         </div>
     )
 }
