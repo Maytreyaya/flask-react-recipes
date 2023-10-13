@@ -1,6 +1,6 @@
 .container{
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .navbar-brand{
@@ -18,4 +18,10 @@
 
 .acaca{
     margin-bottom: 20px;
+}
+
+.alert-class{
+    align-items: center;
+    width: 1000px;
+    margin-left: 250px;
 }
