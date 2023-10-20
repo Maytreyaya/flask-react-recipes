@@ -25,7 +25,7 @@ const SignUpPage=()=>{
     const [username, setUsername] = useState('');
 
 
-    const {register,watch,reset,handleSubmit,formState:{errors}} = useForm({
+    const {register,reset,handleSubmit,formState:{errors}} = useForm({
           resolver: yupResolver(schema)
     });
 

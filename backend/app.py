@@ -8,7 +8,6 @@ from auth import auth_ns
 from exts import db
 
 
-
 def create_app(config):
     app = Flask(__name__)
     CORS(app)
@@ -19,9 +18,7 @@ def create_app(config):
     api = Api(app, doc="/docs")
     api.add_namespace(auth_ns)
     api.add_namespace(recipe_ns)
-
-    CORS(app)
-
+    #
     # @app.shell_context_processors
     # def make_shell_context():
     #     return {

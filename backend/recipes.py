@@ -12,6 +12,7 @@ recipe_model = recipe_ns.model(
         "id": fields.Integer,
         "title": fields.String,
         "description": fields.String,
+        "ingredients": fields.List(fields.String),
     }
 )
 
@@ -41,6 +42,7 @@ class RecipesResource(Resource):
             return {"message": "Invalid JSON data"}, 400
         new_recipe = Recipe(title=data.get("title"),
                             description=data.get("description"),
+                            ingredients=data.get("ingredients"),
                             )
         new_recipe.save()
 

@@ -25,3 +25,16 @@
     width: 1000px;
     margin-left: 250px;
 }
+
+.recipe{
+    margin-top: 10px;
+    box-shadow: 3px 3px 3px rebeccapurple;
+}
+
+.create-recipe{
+    margin: 50px;
+    width: 700px;
+}
+.ingredient{
+    margin: 5px;
+}

@@ -1,3 +1,5 @@
+from sqlalchemy import JSON
+
 from exts import db
 from werkzeug.security import generate_password_hash
 
@@ -6,6 +8,13 @@ class Recipe(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String(), nullable=False)
     description = db.Column(db.Text(), nullable=False)
+    ingredients = db.Column(db.JSON(), nullable=True)
+
+    def add_ingredient(self, ingredient_name):
+        self.ingredients.append(ingredient_name)
+
+    def remove_ingredient(self, ingredient_name):
+        self.ingredients = [ingredient for ingredient in self.ingredients if ingredient != ingredient_name]
 
     def __repr__(self):
         return f"<Recipe {self.title}>"
