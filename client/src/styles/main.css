@@ -1,0 +1,40 @@
+.container{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.navbar-brand{
+    margin-left: 10px;
+}
+.formmm{
+    margin: 15px;
+    width: 500px;
+}
+
+.form{
+    margin: auto;
+    width: 30%;
+}
+
+.acaca{
+    margin-bottom: 20px;
+}
+
+.alert-class{
+    align-items: center;
+    width: 1000px;
+    margin-left: 250px;
+}
+
+.recipe{
+    margin-top: 10px;
+    box-shadow: 3px 3px 3px rebeccapurple;
+}
+
+.create-recipe{
+    margin: 50px;
+    width: 700px;
+}
+.ingredient{
+    margin: 5px;
+}
