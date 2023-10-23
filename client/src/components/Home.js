@@ -98,6 +98,29 @@ const LoggedInHome=()=>{
 
     }
 
+    const deleteRecipe=(id)=>{
+      const confirmed = window.confirm("Are you sure you want to delete this recipe?");
+      if (!confirmed) {
+        return; // User canceled the delete action
+      }
+        console.log(id)
+        const token = localStorage.getItem('REACT_TOKEN_AUTH_KEY');
+        const requestOptions = {
+      method: 'DELETE',
+      headers: {
+        'content-Type': 'application/json',
+        Authorization: `Bearer ${JSON.parse(token)}`,
+      },
+    };
+         fetch(`/recipe/recipe/${id}`, requestOptions)
+      .then(res => res.json())
+      .then(data => {
+        const reload = window.location.reload()
+        reload()
+      })
+      .catch(err => console.log(err));
+    }
+
     return(
         <div className="recipes">
             <Modal
@@ -172,6 +195,8 @@ const LoggedInHome=()=>{
                                  description={recipe.description}
                                  ingredients={recipe.ingredients}
                                  onClick={()=>{showModal(recipe.id)}}
+
+                                 onDelete={()=>{deleteRecipe(recipe.id)}}
                          />
                      )
                  )

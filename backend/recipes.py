@@ -28,12 +28,7 @@ class RecipesResource(Resource):
     @recipe_ns.marshal_list_with(recipe_model)
     def get(self):
         """Get all recipes"""
-        page = int(request.args.get('page', 1))
-        per_page = int(request.args.get('per_page', 10))
-
-        recipes = Recipe.query.paginate(page=page, per_page=per_page)
-
-
+        recipes = Recipe.query.all()
 
         return recipes
 
