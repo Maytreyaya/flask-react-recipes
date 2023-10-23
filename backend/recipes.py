@@ -28,7 +28,12 @@ class RecipesResource(Resource):
     @recipe_ns.marshal_list_with(recipe_model)
     def get(self):
         """Get all recipes"""
-        recipes = Recipe.query.all()
+        page = int(request.args.get('page', 1))
+        per_page = int(request.args.get('per_page', 10))
+
+        recipes = Recipe.query.paginate(page=page, per_page=per_page)
+
+
 
         return recipes
 
@@ -64,7 +69,8 @@ class RecipeResource(Resource):
         data = request.get_json()
 
         recipe_to_upd.update(data.get("title"),
-                             data.get("description"))
+                             data.get("description"),
+                             data.get("ingredients"))
         return recipe_to_upd
 
     @recipe_ns.marshal_with(recipe_model)

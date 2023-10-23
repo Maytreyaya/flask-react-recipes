@@ -41,7 +41,7 @@ const CreateRecipe = () => {
     const requestOptions = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'content-Type': 'application/json',
         Authorization: `Bearer ${JSON.parse(token)}`,
       },
       body: JSON.stringify(data), // Send the constructed data object
@@ -84,6 +84,10 @@ const CreateRecipe = () => {
             {...register("title")}
           />
         </Form.Group>
+        {errors.title && <p style={{ color: 'red' }}><small>Title is required</small></p>}
+        {errors.title?.type === "maxLength" && <p style={{ color: 'red' }}>
+          <small>Title should be less than 25 characters</small>
+        </p>}
         <Form.Group>
           <Form.Label>Description</Form.Label>
           <Form.Control
@@ -92,6 +96,10 @@ const CreateRecipe = () => {
             {...register("description")}
           />
         </Form.Group>
+        {errors.description && <p style={{ color: 'red' }}><small>Description is required</small></p>}
+        {errors.description?.type === "maxLength" && <p style={{ color: 'red' }}>
+          <small>Description should be less than 255 characters</small>
+                </p>}
         <br/>
         <Form.Group>
           <Form.Label><h5>Ingredients</h5></Form.Label>

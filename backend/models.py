@@ -27,9 +27,10 @@ class Recipe(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def update(self, title: str, description: str):
+    def update(self, title: str, description: str, ingredients: str):
         self.title = title
         self.description = description
+        self.ingredients = ingredients
 
         db.session.commit()
 
